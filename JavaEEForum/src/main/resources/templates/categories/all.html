@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link th:href="@{/cssSecond/MyCSS.css}" rel="stylesheet" />
+    <link th:href="@{/cssSecond/LoginCSS.css}" rel="stylesheet" />
+</head>
+<body>
+<h1 th:align="center" >CATEGORIES</h1>
+<div th:align="left" th:object="${userName}">
+    <h3 th:text="'Welcome, ' + ${userName}"></h3>
+</div>
+<table border="1" th:align="center" >
+    <tr th:align="center">
+        <td>Id</td>
+        <td>Categorie</td>
+        <td>Select</td>
+    </tr>
+    <tr th:each="category : ${categories}" th:align="center">
+        <td th:text="${category.getId()}"></td>
+        <td th:text="${category.getName()}"></td>
+        <td>
+            <form th:method="GET" th:action="@{/categories/select/} + ${category.getId()}" th:align="center">
+                <input type="submit" value="Select"> </input>
+            </form>
+        </td>
+    </tr>
+</table>
+<br/>
+<br/>
+<div th:if="${categories.size() == 5}">
+    <form th:method="GET" th:action="@{/categories/getNext/} + ${currentPage}" th:align="center">
+        <input type="submit" value="Next Page"> </input>
+    </form>
+</div>
+<br/>
+<div th:if="${currentPage!=1}">
+    <form th:method="GET" th:action="@{/categories/getPrev/} + ${currentPage}" th:align="center">
+        <input type="submit" value="Previous Page"> </input>
+    </form>
+</div>
+</body>
+</html>

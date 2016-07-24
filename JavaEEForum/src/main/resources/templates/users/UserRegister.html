@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/cssSecond/MyCSS.css}" rel="stylesheet"/>
+</head>
+<body>
+<h1 th:style="|position: absolute; left: 510px; top: 20px;color: white;|">ROYAL FORUM</h1>
+<div class="login-page">
+    <div class="form">
+        <form  th:method="POST" th:object="${userAddForm}" th:align="center">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <input type="text" name="username" placeholder="ENTER YOUR NAME"/>
+            <input type="password" name="password" placeholder="ENTER YOUR PASSWORD"/>
+            <button type="submit">CREATE</button>
+            <p class="message">Already registered? <a th:href="@{/login}" >Sign In</a></p>
+        </form>
+    </div>
+</div>
+</body>
+</html>

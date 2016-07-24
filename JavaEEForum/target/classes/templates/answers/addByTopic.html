@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Answer page</title>
+</head>
+<body>
+<h1 th:align="center">Add Answer page</h1>
+<div style="text-align: center;">
+    <form th:method="POST" th:action="@{/answers/} + ${topic.getId()} + '/AddByTopic'"
+          th:object="${addAnswerForm}">
+        TEXT: <textarea name="text" rows="20" th:align="center" ></textarea>
+        <br/>
+        <br/>
+        <input type="submit" value="Answer"/>
+        <div th:if="${isAdmin}">
+           <a th:href="@{google.bg}" ></a>
+        </div>
+    </form>
+</div>
+<br />
+<form th:method="GET" th:action="@{/topics/} + ${topic.getId()}" th:align="center">
+    <input type="submit" value="RETURN"> </input>
+</form>
+</body>
+</html>

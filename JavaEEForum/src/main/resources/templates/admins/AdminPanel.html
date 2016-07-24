@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/cssSecond/MyCSS.css}" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1 th:align="center" style="alignment: center; color: white">ADMIN PANEL</h1>
+<div th:class="panel">
+    <p><a th:class="menubutton" th:href="@{all/users}">SHOW USER</a></p>
+    <p><a th:class="menubutton" th:href="@{all/users}">SEARCH USER BY NAME</a></p>
+    <p><a th:class="menubutton" th:href="@{all/users}">SHOW CATEGORIES</a></p>
+    <p><a th:class="menubutton" th:href="@{all/users}">SHOW TOPICS</a></p>
+    <p><a th:class="menubutton" th:href="@{all/users}">SHOW LAST ANSWER</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div style="text-align: center;">
+    <h1 th:text="${category.getName()}"></h1>
+</div>
+<form th:method="GET" th:action="@{/categories/} + ${category.getId()} + '/topics/addNewTopics'" th:align="center">
+    <input type="submit" value="ADD NEW TOPIC"> </input>
+</form>
+<br/>
+<table th:border="1" th:align="center" th:object="${isAdmin}">
+    <tr th:align="center">
+        <td>Topic Title</td>
+        <td>Author Name</td>
+    </tr>
+    <tr th:each="topic : ${category.getTopics()}" th:align="center" >
+        <td>
+            <a th:href="@{/topics/} + ${topic.getId()}" th:text="${topic.getTitle()}"></a>
+        </td>
+        <div th:if="${isAdmin}" >
+            <td>
+                <a th:href="@{/UserDataView}" th:text="${topic.getAuthor().getName()}"></a>
+            </td>
+        </div>
+        <div th:unless="${isAdmin}">
+            <td th:text="${topic.getAuthor().getName()}"></td>
+        </div>
+    </tr>
+</table>
+<br />
+<form th:method="GET" th:action="@{/categories/all}" th:align="center">
+    <input type="submit" value="CATEGORIES"> </input>
+</form>
+</body>
+</html>

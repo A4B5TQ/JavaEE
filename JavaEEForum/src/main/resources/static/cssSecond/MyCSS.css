@@ -1,0 +1,111 @@
+html {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+body {
+    background: #2b7fa0;
+    background: -webkit-linear-gradient(right, #2b7fa0, #2b7fa0);
+    background: -moz-linear-gradient(right, #2b7fa0, #2b7fa0);
+    background: -o-linear-gradient(right, #2b7fa0, #2b7fa0);
+    background: linear-gradient(to left, #2b7fa0, #2b7fa0);
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.login-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.form button:hover, .form button:active, .form button:focus {
+    background: #43A047;
+}
+
+.form .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+}
+
+.form .message a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.form .register-form {
+    display: none;
+}
+
+.panel {
+    position: relative;
+    left:7px;
+    z-index: 1;
+    border:1px solid #62a7ff;
+    border-radius: 40px;
+    background: #62a7ff;
+    max-width: 360px;
+    padding:20px;
+    text-align: left;
+    float:left;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+a.menubutton:link {
+    text-decoration: none;
+    text-decoration-style: solid;
+    text-align: center;
+    color: black;
+    background-color: #9cf;
+    display: block;
+    padding: 5px;
+    border: 1px solid #62a7ff;
+    border-radius: 50px;
+    margin: 0 0 40px 0;
+}

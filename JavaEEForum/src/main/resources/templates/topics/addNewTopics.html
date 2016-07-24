@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Topic page</title>
+</head>
+<body>
+<h1 th:align="center">Add Topic page</h1>
+<div style="text-align: center;">
+    <form th:method="POST" th:action="@{/categories/} + ${currentCategory.getId()} + '/topics/addNewTopics'"
+          th:object="${AddTopicForm}">
+        TITLE: <input type="text" name="title"> </input>
+        <br/>
+        <br/>
+        CATEGORY:
+        <select name="categoryID">
+            <option th:each="cat : ${categories}"
+                    th:value="${cat.getId()}"
+                    th:selected="${cat.getId() == currentCategory.getId()}"
+                    th:text="${cat.getName()}">
+
+            </option>
+        </select>
+        <br/>
+        <br/>
+        TEXT: <textarea name="text" rows="20" th:align="center" ></textarea>
+        <br/>
+        <br/>
+        <input type="submit" value="Create"/>
+    </form>
+</div>
+<br/>
+<form th:method="GET" th:action="@{/categories/select/} + ${currentCategory.getId()}" th:align="center">
+    <input type="submit" value="RETURN"> </input>
+</form>
+</body>
+</html>

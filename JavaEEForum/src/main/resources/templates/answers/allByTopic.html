@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div style="text-align: center;">
+    <h1 th:text="${topic.getTitle()}"></h1>
+    <table th:border="1" th:align="center">
+        <tr th:align="center">
+            <td>Topic Text</td>
+            <td>Author Name</td>
+        </tr>
+        <td th:text="${topic.getText()}">
+        </td>
+        <td th:text="${topic.getAuthor().getName()}">
+
+        </td>
+    </table>
+</div>
+<br/>
+<br/>
+<br/>
+<form th:method="GET" th:action="@{/answers/} + ${topic.getId()} + '/AddByTopic'" th:align="center">
+    <input type="submit" value="ADD NEW ANSWER"> </input>
+</form>
+<br/>
+<br/>
+<table th:border="1" th:align="center">
+    <tr th:align="center">
+        <td>Answer Text</td>
+        <td>Author Name</td>
+    </tr>
+    <tr th:each="answer : ${topic.getAnswers()}" th:align="center">
+        <td th:text="${answer.getText()}">
+        </td>
+        <td th:text="${answer.getAuthor().getName()}"></td>
+    </tr>
+</table>
+<br/>
+<form th:method="GET" th:action="@{/categories/select/} + ${topic.getCategory().getId()}" th:align="center">
+    <input type="submit" value="TOPICS"> </input>
+</form>
+</body>
+</html>
