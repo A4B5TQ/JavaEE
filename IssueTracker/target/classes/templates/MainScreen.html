@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" th:lang="bg">
+<head>
+    <header th:include="NavbarHeader"></header>
+</head>
+<body>
+<div th:if="${projects.size()>0}">
+    <header th:include="SideBar"></header>
+    <div>
+        <table class="table table-striped table-hover ">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Име на проект</th>
+                <th>Потребители</th>
+                <th>Тийм лидер</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="info" th:each="project : ${projects}">
+                <td th:text="${project.getId()}"></td>
+                <td><a th:href="@{/edit/project/} + ${project.getId()}" th:text="${project.getName()}"></a></td>
+                <td th:text="${project.getAssigneeUsers().size()}"></td>
+                <td th:text="${project.getTeamLeader()== null ? 'NONE':project.getTeamLeader().getFullname() }"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

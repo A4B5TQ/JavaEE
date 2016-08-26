@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="header">
+</head>
+<body>
+<h1 th:text="${project.name}"></h1>
+<button type="button" class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <input type="text"/>
+            <input type="text"/>
+            <input type="text"/>
+            <input type="text"/>
+            <input type="text"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>

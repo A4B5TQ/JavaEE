@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" th:lang="bg">
+<head>
+    <header th:if="${isAdmin}" th:include="admin/AdminHeader"></header>
+    <header th:unless="${isAdmin}" th:include="NavbarHeader"></header>
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+<body>
+<div>
+    <form class="form-group">
+        <div class="container" style="min-width: 768px">
+            <div class="row box" >
+                <div class="col-md-4" th:each="state : ${states}">
+                    <div th:id="${state.getId()}" class="droppable jumbotron vertical-center">
+                        <h3 th:text="${state.getName()}"></h3>
+                        <div class="draggable list-group" th:each="issue : ${state.getIssues()}">
+                            <td>
+                                <p th:id="${issue.getId()}" class="list-group-item active"
+                                   th:text="${issue.getTitle()}"></p>
+                                <p class="list-group-item" th:text="${issue.getDescription()}"></p>
+                            </td>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        $(function () {
+            $(".draggable").draggable();
+            $(".droppable").droppable({
+                drop: function (event, ui) {
+                    var targetStateId = event.target.attributes.getNamedItem("id").nodeValue;
+                    var targetIssueId = event.toElement.getAttribute("id");
+                    $(function () {
+                        var token = $("meta[name='_csrf']").attr("content");
+                        var header = $("meta[name='_csrf_header']").attr("content");
+                        console.log(targetStateId);
+                        console.log(targetIssueId);
+                        $(document).ajaxSend(function (e, xhr) {
+                            xhr.setRequestHeader(header, token);
+                        });
+                    });
+                    $.ajax({
+                        type: 'POST',
+                        url: "http://localhost:8080/update",
+                        data:  {"stateId":targetStateId, "issueId":targetIssueId},
+                        success: function (e) {
+
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" th:lang="bg">
+<head>
+    <header th:if="${isAdmin}" th:include="admin/AdminHeader"></header>
+    <header th:unless="${isAdmin}" th:include="NavbarHeader"></header>
+</head>
+<body>
+<form class="form-horizontal" th:object="${projectAddForm}" th:method="POST">
+    <div class="form-group">
+        <label for="name" class="col-lg-2 control-label">Име на проект</label>
+        <div class="col-lg-4">
+            <input type="text" name="name" class="form-control" id="name" placeholder="ИМЕ"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+            <div class="checkbox" id="checkboxes">
+                <ul>
+                    <li th:each="state : ${states}">
+                        <input th:type="checkbox" th:field="*{states}" th:text="${state.getName()}"
+                               th:value="${state.getId()}"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-5 col-lg-offset-3">
+            <br/>
+            <button type="reset" class="btn btn-default">Изчисти</button>
+            <button type="submit" class="btn btn-primary" onclick="checkedValue">Създай</button>
+        </div>
+    </div>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+</form>
+</body>
+</html>
