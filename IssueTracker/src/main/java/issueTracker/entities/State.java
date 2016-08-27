@@ -24,7 +24,6 @@ public class State {
         this.setName(name);
         this.projects = new ArrayList<>();
         this.issues = new ArrayList<>();
-        this.setVisibility(DEFAULT_VISIBILITY);
     }
 
     @Id

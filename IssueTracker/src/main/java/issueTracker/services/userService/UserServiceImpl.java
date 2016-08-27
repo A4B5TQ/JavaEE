@@ -49,8 +49,10 @@ public class UserServiceImpl implements UserService {
         state.setVisibility(Visibility.APPLICATION);
         stateRepository.save(state);
         State state1 = new State("IN PROGRESS");
+        state1.setVisibility(Visibility.APPLICATION);
         stateRepository.save(state1);
         State state2 = new State("OPEN");
+        state2.setVisibility(Visibility.APPLICATION);
         stateRepository.save(state2);
         Project project = new Project("kurkur");
         Project project1 = new Project("asdasdasd");

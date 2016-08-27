@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" th:lang="bg">
+<head>
+    <header th:if="${isAdmin}" th:include="admin/AdminHeader"></header>
+    <header th:unless="${isAdmin}" th:include="NavbarHeader"></header>
+</head>
+<body>
+<div>
+    <form th:id="myAjaxRequestForm" class="form-horizontal" th:object="${stateAddForm}" th:method="POST">
+        <fieldset>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <div class="form-group">
+                <label for="name" class="col-lg-2 control-label">Име на състоянието</label>
+                <div class="col-lg-5">
+                    <input type="text" name="name" class="form-control" id="name"
+                           placeholder="Име на състояние"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="select" class="col-lg-2 control-label">Видимост</label>
+                <div th:id="selectorDiv" class="col-lg-10">
+                    <select th:field="*{visibility}" class="form-control selector" th:id="selector">
+                        <option th:each="visibility : ${visibilities}" th:value="${visibility.name()}" th:name="visibility"
+                                th:text="${visibility.name()}"></option>
+                    </select>
+                    <div id="projects">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-5 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Отказ</button>
+                        <button type="submit" class="btn btn-primary">Изпрати</button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<script th:src="@{/js/issue.js}"></script>
+</body>
+</html>
