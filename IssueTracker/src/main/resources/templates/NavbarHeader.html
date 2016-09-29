@@ -1,4 +1,6 @@
 <head xmlns:th="http://www.thymeleaf.org">
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" media="screen"/>
     <title>Issue Tracker</title>
     <nav class="navbar navbar-default">
@@ -62,6 +64,7 @@
         </div>
     </nav>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js" ></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
     <script src="https://bootswatch.com/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://bootswatch.com/assets/js/custom.js"></script>

@@ -24,8 +24,8 @@ public class IssueController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public
     @ResponseBody
-    String dragAndDrop(@RequestParam(value = "stateId") String stateId,
-                       @RequestParam(value = "issueId") String issueId) {
+        String dragAndDrop(@RequestParam(value = "stateId") String stateId,
+                @RequestParam(value = "issueId") String issueId) {
         Issue issue = this.issueService.getOneById(Long.parseLong(issueId));
         State newState = this.stateService.getOneById(Long.parseLong(stateId));
         issue.setCurrentState(newState);

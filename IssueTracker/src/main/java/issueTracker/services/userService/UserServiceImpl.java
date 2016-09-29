@@ -92,4 +92,9 @@ public class UserServiceImpl implements UserService {
         CurrentUser currentUser = new CurrentUser(user);
         return currentUser;
     }
+
+    @Override
+    public User findOneByName(String username) {
+        return this.userRepository.findByUsername(username);
+    }
 }

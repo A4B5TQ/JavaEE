@@ -3,8 +3,6 @@
 <head>
     <header th:if="${isAdmin}" th:include="admin/AdminHeader"></header>
     <header th:unless="${isAdmin}" th:include="NavbarHeader"></header>
-    <meta th:name="_csrf" th:content="${_csrf.token}"/>
-    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
 </head>
 <body>
 <div>
@@ -46,12 +44,6 @@
                         type: 'POST',
                         url: "http://localhost:8080/update",
                         data:  {"stateId":targetStateId, "issueId":targetIssueId},
-                        success: function (e) {
-
-                        },
-                        error: function (e) {
-                            console.log(e);
-                        }
                     });
                 }
             });
